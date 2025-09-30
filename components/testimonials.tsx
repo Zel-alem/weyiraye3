@@ -86,34 +86,31 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="relative max-w-[90vw] sm:max-w-[600px] md:max-w-[700px] mx-auto">
+        <div className="relative max-w-[85vw] sm:max-w-[550px] md:max-w-[650px] mx-auto">
           <div
-            className="relative h-[300px] sm:h-[350px] md:h-[400px] w-full overflow-hidden"
+            className="relative h-[280px] sm:h-[320px] md:h-[360px] w-full overflow-hidden"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             {testimonials.map((testimonial, index) => {
               const isActive = index === activeIndex
-              const offset = index - activeIndex
-              const zIndex = testimonials.length - Math.abs(offset)
-              const translateX = offset * 20 // Tighter offset for mobile-friendly fanning
-              const rotate = offset * 2 // Subtle rotation for smaller screens
-              const scale = isActive ? 1 : 0.92 // Consistent scale for inactive cards
-              const opacity = isActive ? 1 : 0.7 // Consistent opacity
+              const zIndex = testimonials.length - Math.abs(index - activeIndex)
+              const scale = isActive ? 1 : 0.94 // Slightly smaller inactive cards
+              const opacity = isActive ? 1 : 0.5 // Lower opacity for inactive cards to show stack
 
               return (
                 <Card
                   key={index}
-                  className={`card-green-border absolute top-0 left-0 w-full transition-all duration-500 ease-in-out shadow-md hover:shadow-lg`}
+                  className={`card-green-border absolute top-0 left-0 w-full transition-all duration-500 ease-in-out shadow-lg hover:shadow-xl`}
                   style={{
-                    transform: `translateX(${translateX}px) rotate(${rotate}deg) scale(${scale})`,
+                    transform: `scale(${scale})`,
                     zIndex,
                     opacity,
-                    transformOrigin: 'center bottom',
+                    transformOrigin: 'center center',
                   }}
                 >
-                  <CardContent className="p-4 sm:p-6 h-full flex flex-col justify-between">
+                  <CardContent className="p-4 sm:p-5 md:p-6 h-full flex flex-col justify-between">
                     <div className="flex items-start space-x-3 sm:space-x-4">
                       <div className="bg-primary/10 p-2 rounded-lg">
                         <Quote className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
@@ -145,17 +142,17 @@ export function Testimonials() {
 
           <button
             onClick={handlePrev}
-            className="absolute left-[-48px] sm:left-[-56px] top-1/2 transform -translate-y-1/2 p-2 sm:p-3 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors z-20"
+            className="hidden sm:block absolute left-[-60px] top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-primary/20 text-primary hover:bg-primary/30 transition-all shadow-md hover:shadow-lg z-20"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="h-6 w-6 sm:h-8 sm:w-8" />
+            <ChevronLeft className="h-8 w-8" />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-[-48px] sm:right-[-56px] top-1/2 transform -translate-y-1/2 p-2 sm:p-3 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors z-20"
+            className="hidden sm:block absolute right-[-60px] top-1/2 transform -translate-y-1/2 p-3 rounded-full bg-primary/20 text-primary hover:bg-primary/30 transition-all shadow-md hover:shadow-lg z-20"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="h-6 w-6 sm:h-8 sm:w-8" />
+            <ChevronRight className="h-8 w-8" />
           </button>
         </div>
       </div>

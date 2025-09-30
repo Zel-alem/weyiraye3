@@ -86,24 +86,6 @@ const trustFeatures = [
   },
 ]
 
-const insuranceFeatures = [
-  {
-    title: "Cargo Insurance Coverage",
-    description: "Comprehensive insurance protection for all shipments transported through Weyriaye.",
-    coverage: ["Damage protection", "Theft coverage", "Loss compensation", "Weather-related incidents"],
-  },
-  {
-    title: "Vehicle Insurance",
-    description: "All registered vehicles must maintain valid insurance coverage.",
-    coverage: ["Third-party liability", "Comprehensive coverage", "Driver protection", "Passenger coverage"],
-  },
-  {
-    title: "Platform Protection",
-    description: "Additional platform-level protections for enhanced security.",
-    coverage: ["Transaction protection", "Identity theft prevention", "Data security", "Privacy protection"],
-  },
-]
-
 export default function SafetyPage() {
   return (
     <div className="min-h-screen bg-background">
@@ -188,41 +170,6 @@ export default function SafetyPage() {
                         <p className="text-muted-foreground text-pretty">{feature.description}</p>
                       </div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Insurance Coverage */}
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
-                <span className="text-accent">Insurance</span> Coverage
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-                Comprehensive insurance protection for all shipments and participants on the platform.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {insuranceFeatures.map((insurance, index) => (
-                <Card key={index} className="bg-card border-border">
-                  <CardHeader>
-                    <CardTitle className="text-lg text-foreground">{insurance.title}</CardTitle>
-                    <CardDescription className="text-muted-foreground">{insurance.description}</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-2">
-                      {insurance.coverage.map((item, itemIndex) => (
-                        <li key={itemIndex} className="flex items-center text-sm text-muted-foreground">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
                   </CardContent>
                 </Card>
               ))}

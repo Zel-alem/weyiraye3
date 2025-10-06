@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Truck } from "lucide-react"
+import { Menu, X } from "lucide-react"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,13 +23,18 @@ export function Navigation() {
   return (
     <nav className="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 link-green-hover">
-            <div className="bg-primary p-2 rounded-lg transition-all duration-300 hover:scale-110 hover:rotate-3">
-              <Truck className="h-6 w-6 text-primary-foreground" />
+          <Link href="/" className="link-green-hover">
+            <div className="bg-primary p-0 rounded-lg transition-all duration-300 hover:scale-110 hover:rotate-3">
+              <Image
+                src="/logo.svg" // Replace with your actual logo path (e.g., '/images/weyriaye-logo.svg' or '/logo.png')
+                alt="Weyriaye Logo"
+                width={64}
+                height={64}
+                className="object-contain" // Ensures the logo scales properly within the container
+              />
             </div>
-            <span className="text-xl font-bold text-foreground">Weyriaye</span>
           </Link>
 
           {/* Desktop Navigation */}
